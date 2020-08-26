@@ -1,4 +1,12 @@
 <form>
-  <button class="btn btn-primary m-4" routerLink="/signup">Signup</button>
-  <button class="btn btn-primary m-2" routerLink="/login">Signin</button>
+  <div *ngIf="!token">
+    <button class="btn btn-primary m-4" routerLink="/signup">Signup</button>
+    <button class="btn btn-primary m-2" routerLink="/login">Signin</button>
+  </div>
+
+  <div *ngIf="token">
+    <button class="btn btn-primary m-4" (click)='logout()'>Logout</button>
+  </div>
+  
+
 </form>

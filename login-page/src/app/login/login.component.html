@@ -1,11 +1,11 @@
-<form class="form-group">
+<form class="form-group" [formGroup] = 'signinForm'>
   <div>
     <label for="username">Username</label>
-    <input type="text" id="username" class="form-control">
+    <input type="text" id="username" class="form-control" formControlName = "username">
   </div>
   <div>
     <label for="password">Passowrd</label>
-    <input type="password" id="password" class="form-control">
+    <input type="password" id="password" class="form-control" formControlName = "password">
   </div>
   <div>
     <button class="btn btn-primary" (click)="signin()">Sign in</button>

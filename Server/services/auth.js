@@ -12,7 +12,7 @@ async function getUser(req, res){
     return res.status(400).send('Invalid username or password');
   }
   let token = jwt.sign({ _id: user._id, name: user.name}, 'secretKey');
-  res.header({'x-auth-token': token}).status(200).send(token);
+  res.status(200).send(token);
 }
 
 module.exports.getUser = getUser;
