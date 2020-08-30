@@ -19,7 +19,7 @@ async function createUser(req, res){
   const savedData = await user.save();
   let token = jwt.sign({_id: savedData._id, name: savedData.name}, 'privateKey');
 
-  res.header({'x-auth-token': token}).status(200).send(_.pick(savedData, ['name', 'email']));
+  res.header({'x-auth-token': token, 'access-control-expose-headers': 'x-auth-token'}).status(200).send(_.pick(savedData, ['name', 'email']));
 }
 
 module.exports.createUser = createUser;

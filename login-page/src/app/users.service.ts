@@ -10,7 +10,10 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   signUp(body){
-    return this.http.post(this.url + 'users', body);
+    let opts: any = {
+      observe: 'response'
+    }
+    return this.http.post(this.url + 'users', body, opts);
   }
 
   signin(body){

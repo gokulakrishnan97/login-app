@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UsersService } from '../users.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -13,7 +15,9 @@ export class SignupComponent implements OnInit {
     username: new FormControl(''),
     password: new FormControl('')
   })
-  constructor(private usersService: UsersService) { }
+  constructor(
+    private usersService: UsersService,
+    public router: Router ) { }
 
   ngOnInit(): void {
   }
@@ -31,6 +35,9 @@ export class SignupComponent implements OnInit {
     }
     this.usersService.signUp(body)
       .subscribe( (res) =>{
+        let token = res.headers.get('x-auth-token');
+        localStorage.setItem('token', token);
+        this.router.navigate(['']);
     })
   }
 
